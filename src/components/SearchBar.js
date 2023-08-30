@@ -31,9 +31,14 @@ function SearchBar({order, setorder, query, setquery}) {
     //console.log("OLD usealphabet = " + usealphabet);
     //console.log("OLD useprice = " + useprice);
     let tempnewusealpha = false;
-    if (event.target.value === "Alphabetically" || event.target.value === "Price")
+    if (event.target.value === "Alphabetically")
     {
       tempnewusealpha = (usealphabet === false);
+    }
+    else if (event.target.value === "Price")
+    {
+      if (useprice) tempnewusealpha = (usealphabet === false);
+      else tempnewusealpha = false;
     }
     else throw new Error("illegal value found and used for the target radio button!");
     //console.log("tempnewusealpha = " + tempnewusealpha);
