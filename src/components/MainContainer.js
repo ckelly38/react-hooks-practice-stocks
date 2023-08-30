@@ -171,37 +171,35 @@ function MainContainer() {
     }
   }
 
-  function myIdCmptr(a, b)
+  function dataCmptr(a, b, mkey)
   {
+    if (mkey === undefined || mkey === null || mkey.length < 1)
+    {
+      throw "illegal value found and used for mkey it must be defined and not empty!";
+    }
+    //else;//do nothing
+
     if (a == undefined || a == null || b == undefined || b == null)
     {
       return isABeforeBIfUndefinedOrNull(a, b);
     }
-    else return mySortCmptr(a.id, b.id);
+    else return mySortCmptr(a[mkey], b[mkey]);
+  }
+  function myIdCmptr(a, b)
+  {
+    return dataCmptr(a, b, "id");
   }
   function myPriceCmptr(a, b)
   {
-    if (a == undefined || a == null || b == undefined || b == null)
-    {
-      return isABeforeBIfUndefinedOrNull(a, b);
-    }
-    else return mySortCmptr(a.price, b.price);
+    return dataCmptr(a, b, "price");
   }
   function myNameCmptr(a, b)
   {
-    if (a == undefined || a == null || b == undefined || b == null)
-    {
-      return isABeforeBIfUndefinedOrNull(a, b);
-    }
-    else return mySortCmptr(a.name, b.name);
+    return dataCmptr(a, b, "name");
   }
   function myTickerNameCmptr(a, b)
   {
-    if (a == undefined || a == null || b == undefined || b == null)
-    {
-      return isABeforeBIfUndefinedOrNull(a, b);
-    }
-    else return mySortCmptr(a.ticker, b.ticker);
+    return dataCmptr(a, b, "ticker");
   }
   //testMySortComparator();
 
