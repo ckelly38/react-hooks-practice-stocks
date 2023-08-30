@@ -195,6 +195,14 @@ function MainContainer() {
     }
     else return mySortCmptr(a.name, b.name);
   }
+  function myTickerNameCmptr(a, b)
+  {
+    if (a == undefined || a == null || b == undefined || b == null)
+    {
+      return isABeforeBIfUndefinedOrNull(a, b);
+    }
+    else return mySortCmptr(a.ticker, b.ticker);
+  }
   //testMySortComparator();
 
   //first sort them by order (ID, ALPHABET, PRICE)
@@ -249,7 +257,8 @@ function MainContainer() {
         if (order === "ALPHABET")
         {
           myqsrtdbynamestocksonly = myqstocks.map((stock) => stock);
-          myqsrtdbynamestocksonly.sort(myNameCmptr);
+          //myqsrtdbynamestocksonly.sort(myNameCmptr);
+          myqsrtdbynamestocksonly.sort(myTickerNameCmptr);
         }
         else if (order === "PRICE")
         {
