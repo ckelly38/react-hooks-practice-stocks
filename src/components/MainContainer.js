@@ -40,19 +40,19 @@ function MainContainer() {
   {
       //mya, myb
       //0, myb
-      if (isNaN(stra) == isNaN(strb))
+      if (isNaN(stra) === isNaN(strb))
       {
           if (isNaN(stra));
           else
           {
-              if (stra == undefined || stra == null)
+              if (stra === undefined || stra === null)
               {
-                  if (strb == undefined || strb == null) return 0;
+                  if (strb === undefined || strb === null) return 0;
                   else return -1;
               }
               else
               {
-                  if (strb == undefined || strb == null) return 1;
+                  if (strb === undefined || strb === null) return 1;
                   else
                   {
                       let mynuma = Number(stra);
@@ -70,7 +70,7 @@ function MainContainer() {
           else return 1;
       }
 
-      if (stra.length == strb.length);
+      if (stra.length === strb.length);
       else
       {
           if (stra.length < 1)
@@ -99,7 +99,7 @@ function MainContainer() {
 
           let mycodea = stra.charCodeAt(n);
           if (mycodea < mycodeb) return -1;
-          else if (mycodea == mycodeb);
+          else if (mycodea === mycodeb);
           else return 1;
       }
       return 0;
@@ -111,20 +111,20 @@ function MainContainer() {
       //-1 b moves on
       //0 otherwise
 
-      if (a == undefined || a == null)
+      if (a === undefined || a === null)
       {
-          if (b == undefined || b == null) return 0;
+          if (b === undefined || b === null) return 0;
           else return -1;
       }
       else
       {
-          if (b == undefined || b == null) return 1;
+          if (b === undefined || b === null) return 1;
           //else;//do nothing proceed below
       }
 
       if (isNaN(a) || isNaN(b))
       {
-          if (isNaN(a) == isNaN(b))
+          if (isNaN(a) === isNaN(b))
           {
               //they both are nan
               return myStringComparator("" + a, "" + b);
@@ -159,14 +159,14 @@ function MainContainer() {
   
   function isABeforeBIfUndefinedOrNull(a, b)
   {
-    if (a == undefined || a == null)
+    if (a === undefined || a === null)
     {
-        if (b == undefined || b == null) return 0;
+        if (b === undefined || b === null) return 0;
         else return -1;
     }
     else
     {
-        if (b == undefined || b == null) return 1;
+        if (b === undefined || b === null) return 1;
         else throw new Error("they must be undefined or null!");
     }
   }
@@ -175,11 +175,11 @@ function MainContainer() {
   {
     if (mkey === undefined || mkey === null || mkey.length < 1)
     {
-      throw "illegal value found and used for mkey it must be defined and not empty!";
+      throw new Error("illegal value found and used for mkey it must be defined and not empty!");
     }
     //else;//do nothing
 
-    if (a == undefined || a == null || b == undefined || b == null)
+    if (a === undefined || a === null || b === undefined || b === null)
     {
       return isABeforeBIfUndefinedOrNull(a, b);
     }
