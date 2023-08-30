@@ -228,6 +228,44 @@ function MainContainer() {
     throw new Error("the stock must have been on the list, but it was not!");
   }
 
+  function flipMineStatus(mid)
+  {
+    //get the mine status from the original unsorted list
+    //then they will both correspond, then change it
+    //console.log("flipMineStatus: mid = " + mid);
+    //console.log("allstocks = ", allstocks);
+    //console.log("ismine = ", ismine);
+    if (mid === undefined || mid === null)
+    {
+      throw new Error("the id must be defined so we can get the mine status of the stock item, but it " +
+        "was not!");
+    }
+    //else;//do nothing
+
+    let fndidx = -1;
+    for (let n = 0; n < allstocks.length; n++)
+    {
+      if (allstocks[n].id == mid)
+      {
+        fndidx = n;
+        break;
+      }
+      //else;//do nothing
+    }//end of n for loop
+    //console.log("fndidx = " + fndidx);
+
+    if (fndidx < 0 || (allstocks.length > 0 && (fndidx > allstocks.length - 1)))
+    {
+      if (allstocks.length < 1) return;
+      else throw new Error("illegal node index found and used here!");
+    }
+    //else;//do nothing
+
+    //now get and change the mine status
+    let nwismine = ismine.map((mine, index) => ((index === fndidx) ? !mine : mine));
+    setIsMine(nwismine);
+  }
+
   function genStocksListForPortfolioOrStockContainer(useismine)
   {
     console.log("useismine = " + useismine);
@@ -282,8 +320,8 @@ function MainContainer() {
 
       myretstocks = mysrtedqstocks.map((stockobj) => {
         return (
-          <Stock key={stockobj.id} name={stockobj.name} tkrnm={stockobj.ticker}
-          price={stockobj.price} onclick={null} />
+          <Stock key={stockobj.id} mid={stockobj.id} name={stockobj.name} tkrnm={stockobj.ticker}
+          price={stockobj.price} onclick={flipMineStatus} />
         );
       });
     }
@@ -297,8 +335,6 @@ function MainContainer() {
   {
     return genStocksListForPortfolioOrStockContainer(false);
   }
-
-  
 
 
   if (isLoaded)
